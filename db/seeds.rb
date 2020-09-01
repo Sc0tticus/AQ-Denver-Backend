@@ -14017,12 +14017,13 @@ geojson = {
 # pm2_5Data = geojson.filter (where diagnostic_id = pm25)
 # pm2_5Data.forEach(Pm2_5.create(reading = data.reading, lat = data.lat, long = data.long))
 
-def PM2_5_Data(geojson)
+def PM2_5_Data(geojson, diagnostic_id)
   geojson[:features].each do |data|
-    if data[:properties][:diagnostic_id] == "DiagnosticBluetoothBeaconParticulateMatter2P5MicronId"
-      PM2_5_Data.create
+    if data[:properties][:diagnostic_id] == diagnostic_id
+      binding.pry
+      PM2_5_Data.create(snr_read = data[:properties][:snr_read], latitude = data[:geometry][:coordinates][1], longitude = data[:geometry][:coordinates][0] )
     end
   end
 end
 
-PM2_5_Data(geojson)
+PM2_5_Data(geojson,"DiagnosticBluetoothBeaconParticulateMatter2P5MicronId")
