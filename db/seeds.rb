@@ -1,3 +1,5 @@
+require 'pry'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -14011,3 +14013,16 @@ geojson = {
  }
 ]
 }
+
+# pm2_5Data = geojson.filter (where diagnostic_id = pm25)
+# pm2_5Data.forEach(Pm2_5.create(reading = data.reading, lat = data.lat, long = data.long))
+
+def PM2_5_Data(geojson)
+  geojson[:features].each do |data|
+    if data[:properties][:diagnostic_id] == "DiagnosticBluetoothBeaconParticulateMatter2P5MicronId"
+      PM2_5_Data.create
+    end
+  end
+end
+
+PM2_5_Data(geojson)
