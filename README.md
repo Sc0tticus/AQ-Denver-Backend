@@ -1,5 +1,5 @@
 # About
-This repository allows the user to see a heatmap of paticle data (PM2.5) collected by Sawatch Labs on March 14th, 2020 around Denver, Colorado. The heatmap.js plugin was used to make this data visual: https://www.patrick-wied.at/static/heatmapjs/example-heatmap-leaflet.html
+This repository allows the user to see a heatmap of particle data (PM2.5) collected by Sawatch Labs on March 14th, 2020 around Denver, Colorado. The heatmap.js plugin was used to make this data visual: https://www.patrick-wied.at/static/heatmapjs/example-heatmap-leaflet.html
 
 # Frontend Repository
 Clone down the following repo: https://github.com/Sc0tticus/AQ-Heatmaps/blob/master/README.md and run lite-server to get the frontend running locally.
