@@ -1,12 +1,3 @@
-# require 'pry'
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 geojson = {
   "type": "FeatureCollection",
@@ -14014,27 +14005,12 @@ geojson = {
 ]
 }
 
-# pm2_5Data = geojson.filter (where diagnostic_id = pm25)
-# pm2_5Data.forEach(Pm2_5.create(reading = data.reading, lat = data.lat, long = data.long))
-
 def PM2_5_Data(geojson, diagnostic_id)
   geojson[:features].map do |data|
     if data[:properties][:diagnostic_id] == diagnostic_id
-    #  heatmap_object = { latitude: data[:geometry][:coordinates][1], longitude: data[:geometry][:coordinates][0], snr_read: data[:properties][:snr_read] }
     AirQuality.create(latitude: data[:geometry][:coordinates][1], longitude: data[:geometry][:coordinates][0], snr_read: data[:properties][:snr_read] )
-      # binding.pry
     end
   end
-  # binding.pry
 end
 
 PM2_5_Data(geojson,"DiagnosticBluetoothBeaconParticulateMatter2P5MicronId")
-
-# pm2_5.create
-
-# create_table "pm2_5s", force: :cascade do |t|
-#   t.integer "snr_read"
-#   t.float "latitude"
-#   t.float "longitude"
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
